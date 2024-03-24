@@ -2,17 +2,17 @@ import React, { useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../assets/access-denied.css";
-const AccessDenied = () => {
+const AccessDenied = ({ path = "login" }) => {
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
     setTimeout(() => {
-      navigate("/login", { state: location.pathname });
-    }, 3000);
+      navigate(`/${path}`, { state: location.pathname });
+    }, 1500);
   }, []);
 
   return (
-    <Layout>
+    <Layout title="Access Denied | Ecom 2024">
       <div className="box">
         <div className="super-wrapper">
           <div className="no-no-no">

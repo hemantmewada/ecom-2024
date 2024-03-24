@@ -10,12 +10,20 @@ import Register from "./pages/Register";
 import Policy from "./pages/Policy";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
 import AccessDenied from "./pages/AccessDenied";
 import ForgotPassword from "./pages/ForgotPassword";
 import OtpVerification from "./pages/OtpVerification";
 import ResetPassword from "./pages/ResetPassword";
+import UserDashboard from "./pages/dashboards/UserDashboard";
+import AdminDashboard from "./pages/dashboards/AdminDashboard";
+import VendorDashboard from "./pages/dashboards/VendorDashboard";
+import UserRoutes from "./components/routes/UserRoutes";
+import AdminRoutes from "./components/routes/AdminRoutes";
+import VendorRoutes from "./components/routes/VendorRoutes";
+import Categories from "./pages/admin/Categories";
+import Products from "./pages/admin/Products";
+import Users from "./pages/admin/Users";
 
 const App = () => {
   return (
@@ -31,7 +39,18 @@ const App = () => {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/dashboard" element={<ProtectedRoute />}>
-          <Route path="" element={<Dashboard />} />
+          <Route path="" element={<UserRoutes />}>
+            <Route path="user" element={<UserDashboard />} />
+          </Route>
+          <Route path="" element={<AdminRoutes />}>
+            <Route path="admin" element={<AdminDashboard />} />
+            <Route path="admin/categories" element={<Categories />} />
+            <Route path="admin/products" element={<Products />} />
+            <Route path="admin/users" element={<Users />} />
+          </Route>
+          <Route path="" element={<VendorRoutes />}>
+            <Route path="vendor" element={<VendorDashboard />} />
+          </Route>
         </Route>
         <Route path="/access-denied" element={<AccessDenied />} />
         <Route path="/*" element={<PageNotFound />} />

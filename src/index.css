@@ -6,10 +6,11 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-.nav-link {
+/* navbar header */
+.navbar .nav-link {
     position: relative;
 }
-.nav-link::after{
+.navbar .nav-link::after{
     content: '';
     position: absolute;
     height: 3px;
@@ -20,11 +21,11 @@
     background-color: grey;
     transition: 0.3s ease-in-out;
 }
-.nav-link.active::after,
-.nav-link:hover::after{
+.navbar .nav-link.active::after,
+.navbar .nav-link:hover::after{
     width: 100%;
 }
-ul.navbar-nav li.nav-item{
+.navbar ul.navbar-nav li.nav-item{
     margin-left: 10px;
 }
 /* =============================

@@ -116,15 +116,21 @@ const Header = () => {
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li className="nav-item">
-                    <Link className="dropdown-item nav-link" to="/dashboard">
+                    <Link
+                      className="nav-link"
+                      to={`/dashboard/${
+                        auth?.user?.role == "admin"
+                          ? "admin"
+                          : auth?.user?.role == "customer"
+                          ? "user"
+                          : "vendor"
+                      }`}
+                    >
                       Dashboard
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link
-                      className="dropdown-item nav-link"
-                      onClick={handleLogout}
-                    >
+                    <Link className="nav-link" onClick={handleLogout}>
                       Logout
                     </Link>
                   </li>

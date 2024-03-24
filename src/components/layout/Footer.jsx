@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <h1 className="text-center">
-        All Right Reserved &copy;{" "}
+        All Right Reserved &copy;
         <a href="https://github.com/hemantmewada/" target="_blank">
           Hemant Mewada
         </a>
