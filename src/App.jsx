@@ -10,6 +10,12 @@ import Register from "./pages/Register";
 import Policy from "./pages/Policy";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/routes/ProtectedRoute";
+import AccessDenied from "./pages/AccessDenied";
+import ForgotPassword from "./pages/ForgotPassword";
+import OtpVerification from "./pages/OtpVerification";
+import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
@@ -20,7 +26,14 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/otp-verification" element={<OtpVerification />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/policy" element={<Policy />} />
+        <Route path="/dashboard" element={<ProtectedRoute />}>
+          <Route path="" element={<Dashboard />} />
+        </Route>
+        <Route path="/access-denied" element={<AccessDenied />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer

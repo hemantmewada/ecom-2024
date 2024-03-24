@@ -105,12 +105,12 @@ ul.navbar-nav li.nav-item{
     padding: 5% 0;
 }
 /* register form css */
-.register-form{
+.register-login-form{
     /* text-align: center; */
     width: 25%;
 }
 @media screen and (max-width: 600px) {
-    .register-form {
+    .register-login-form {
         width: unset;
     }
 }

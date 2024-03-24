@@ -1,8 +1,27 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth";
+import { toast } from "react-toastify";
 const Header = () => {
   const location = useLocation();
+
+  const { auth, setAuth } = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    toast.success("Logged out successfully.");
+    setTimeout(() => {
+      navigate("/login");
+      localStorage.clear();
+      setAuth({
+        ...auth,
+        user: null,
+        token: "",
+      });
+    }, 1500);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -55,26 +74,72 @@ const Header = () => {
                 Contact
               </Link>
             </li>
+            {!auth.user ? (
+              <>
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link${
+                      location.pathname == "/login" ? " active" : ""
+                    }`}
+                    aria-current="page"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link${
+                      location.pathname == "/register" ? " active" : ""
+                    }`}
+                    aria-current="page"
+                    to="/register"
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {auth?.user?.name.toUpperCase()}
+                </a>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li className="nav-item">
+                    <Link className="dropdown-item nav-link" to="/dashboard">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="dropdown-item nav-link"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            )}
             <li className="nav-item">
               <Link
                 className={`nav-link${
-                  location.pathname == "/login" ? " active" : ""
+                  location.pathname == "/cart" ? " active" : ""
                 }`}
                 aria-current="page"
-                to="/login"
+                to="/cart"
               >
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link${
-                  location.pathname == "/register" ? " active" : ""
-                }`}
-                aria-current="page"
-                to="/register"
-              >
-                Register
+                Cart
               </Link>
             </li>
             {/* <li className="nav-item">

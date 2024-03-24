@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import config from "../config/config";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signupSchema } from "../validation/validationSchema";
 
 const initialValues = {
@@ -17,6 +17,7 @@ const initialValues = {
   role: "",
 };
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   // const [data, setData] = useState(initialValues);
 
@@ -40,6 +41,7 @@ const Register = () => {
 
   const register = async (values, action) => {
     try {
+      setLoading(true);
       const res = await axios.post(`${config.BASE_URL}/auth/register`, {
         ...values,
         phone: values.phone.toString(),
@@ -53,8 +55,10 @@ const Register = () => {
       } else {
         toast.error(res.data.message);
       }
+      setLoading(false);
       // console.log(res);
     } catch (error) {
+      setLoading(false);
       toast.error(error.response.data.message);
       console.log(error);
       console.log(`Error in register api call: ${error}`);
@@ -72,7 +76,7 @@ const Register = () => {
         <h1 className="text-uppercase text-start border-bottom border-4 border-gray">
           Register here
         </h1>
-        <form className="register-form" onSubmit={handleSubmit}>
+        <form className="register-login-form" onSubmit={handleSubmit}>
           <div className="mb-3">
             <InputType
               id="name"
@@ -169,9 +173,16 @@ const Register = () => {
             )}
           </div>
           <button type="submit" className="btn btn-primary w-100">
-            Register
+            {!loading ? "Register" : "Registering..."}
           </button>
         </form>
+        <br />
+        <p>
+          Already have a account, click to{" "}
+          <Link to="/login" className="text-decoration-none">
+            login
+          </Link>
+        </p>
       </div>
     </Layout>
   );
