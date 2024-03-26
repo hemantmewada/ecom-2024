@@ -124,7 +124,7 @@ const Header = () => {
                           : auth?.user?.role == "customer"
                           ? "user"
                           : "vendor"
-                      }`}
+                      }/home`}
                     >
                       Dashboard
                     </Link>

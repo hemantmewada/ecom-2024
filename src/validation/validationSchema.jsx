@@ -50,6 +50,12 @@ const resetPasswordSchema = Yup.object({
     .required("confirm password is required.")
     .oneOf([Yup.ref("newPassword"), null], "password must match."),
 });
+const addEditCategorySchema = Yup.object({
+  name: Yup.string()
+    .min(3, "Name should be atleast 3 character")
+    .max(255, "Name should be less than 255 character")
+    .required("Name is required."),
+});
 
 export {
   signupSchema,
@@ -57,4 +63,5 @@ export {
   forgotPasswordSchema,
   otpVerificationSchema,
   resetPasswordSchema,
+  addEditCategorySchema,
 };

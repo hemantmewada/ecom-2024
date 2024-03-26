@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import config from "../config/config";
 import { toast } from "react-toastify";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { resetPasswordSchema } from "../validation/validationSchema";
 
 const ResetPassword = () => {
@@ -54,7 +54,6 @@ const ResetPassword = () => {
       setLoading(false);
       toast.error(error?.response?.data.message);
       console.log(error);
-      console.log(`Error in forgot-password api call: ${error}`);
     }
   };
 

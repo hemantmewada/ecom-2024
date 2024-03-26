@@ -51,7 +51,6 @@ const Login = () => {
       setLoading(false);
       toast.error(error.response.data.message);
       console.log(error);
-      console.log(`Error in login api call: ${error}`);
     }
   };
   return (

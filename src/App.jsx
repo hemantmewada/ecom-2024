@@ -15,15 +15,16 @@ import AccessDenied from "./pages/AccessDenied";
 import ForgotPassword from "./pages/ForgotPassword";
 import OtpVerification from "./pages/OtpVerification";
 import ResetPassword from "./pages/ResetPassword";
-import UserDashboard from "./pages/dashboards/UserDashboard";
-import AdminDashboard from "./pages/dashboards/AdminDashboard";
+import UserDashboard from "./pages/user/UserDashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import VendorDashboard from "./pages/dashboards/VendorDashboard";
 import UserRoutes from "./components/routes/UserRoutes";
 import AdminRoutes from "./components/routes/AdminRoutes";
 import VendorRoutes from "./components/routes/VendorRoutes";
-import Categories from "./pages/admin/Categories";
-import Products from "./pages/admin/Products";
-import Users from "./pages/admin/Users";
+import AdminCategories from "./pages/admin/AdminCategories";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminUsers from "./pages/admin/AdminUsers";
+import UserOrders from "./pages/user/UserOrders";
 
 const App = () => {
   return (
@@ -40,16 +41,17 @@ const App = () => {
         <Route path="/policy" element={<Policy />} />
         <Route path="/dashboard" element={<ProtectedRoute />}>
           <Route path="" element={<UserRoutes />}>
-            <Route path="user" element={<UserDashboard />} />
+            <Route path="user/home" element={<UserDashboard />} />
+            <Route path="user/orders" element={<UserOrders />} />
           </Route>
           <Route path="" element={<AdminRoutes />}>
-            <Route path="admin" element={<AdminDashboard />} />
-            <Route path="admin/categories" element={<Categories />} />
-            <Route path="admin/products" element={<Products />} />
-            <Route path="admin/users" element={<Users />} />
+            <Route path="admin/home" element={<AdminDashboard />} />
+            <Route path="admin/categories" element={<AdminCategories />} />
+            <Route path="admin/products" element={<AdminProducts />} />
+            <Route path="admin/users" element={<AdminUsers />} />
           </Route>
           <Route path="" element={<VendorRoutes />}>
-            <Route path="vendor" element={<VendorDashboard />} />
+            <Route path="vendor/home" element={<VendorDashboard />} />
           </Route>
         </Route>
         <Route path="/access-denied" element={<AccessDenied />} />

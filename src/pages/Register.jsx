@@ -61,7 +61,6 @@ const Register = () => {
       setLoading(false);
       toast.error(error.response.data.message);
       console.log(error);
-      console.log(`Error in register api call: ${error}`);
     }
   };
 

@@ -56,7 +56,6 @@ const ForgotPassword = () => {
       setLoading(false);
       toast.error(error?.response?.data.message);
       console.log(error);
-      console.log(`Error in forgot-password api call: ${error}`);
     }
   };
 
