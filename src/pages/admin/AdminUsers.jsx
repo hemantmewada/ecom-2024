@@ -56,13 +56,13 @@ const AdminUsers = () => {
                     <th scope="col">Email Id</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Created At</th>
-                    <th scope="col">Action</th>
+                    {/* <th scope="col">Action</th> */}
                   </tr>
                 </thead>
                 <tbody>
                   {loading ? (
                     <tr className="text-center">
-                      <td scope="row" colSpan="4">
+                      <td scope="row" colSpan="5">
                         <Loader
                           type="spinner-cub"
                           bgColor="#2A2C35"
@@ -81,7 +81,7 @@ const AdminUsers = () => {
                         <td>
                           {dateFormat(user.createdAt, "d-MM-yyyy h:mm:ss a")}
                         </td>
-                        <td className="">
+                        {/* <td className="">
                           <button
                             type="button"
                             className="btn btn-outline-success me-2"
@@ -94,7 +94,7 @@ const AdminUsers = () => {
                           >
                             <FaTrashAlt />
                           </button>
-                        </td>
+                        </td> */}
                       </tr>
                     ))
                   )}
