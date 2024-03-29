@@ -97,7 +97,7 @@ const Orders = () => {
                     <th scope="col">Order Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Detail</th>
+                    {/* <th scope="col">Detail</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -141,14 +141,14 @@ const Orders = () => {
                           </td>
                         )}
                         <td scope="row">{order.products.length}</td>
-                        <td>
+                        {/* <td>
                           <button
                             type="button"
                             className="btn btn-outline-success"
                           >
                             Detail
                           </button>
-                        </td>
+                        </td> */}
                       </tr>
                     ))
                   )}
