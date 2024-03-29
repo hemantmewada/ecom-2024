@@ -119,3 +119,71 @@
 .form-error{
     color: #ff0000;
 }
+.space{
+    height: 20px;
+}
+/* homepage css */
+.clear-all{
+    color: #ff3f6c;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+}
+.category-list-home{
+    list-style-type: none;
+    padding: 0;
+}
+.category-data label{
+    cursor: pointer;
+}
+.products-home .category-name{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inherit;
+}
+.category-name {
+    position: relative;
+    margin-left: 20px;
+}
+.category-name::before {
+    content: "";
+    width: 23px;
+    height: 2px;
+    background-color: #ff3f6c;
+    position: absolute;
+    top: 46%;
+    left: -29px;
+}
+.category-name::after {
+    content: "";
+    width: 23px;
+    height: 2px;
+    background-color: #ff3f6c;
+    position: absolute;
+    top: 46%;
+    left: -29px;
+}
+.category-parent-div{
+    cursor: pointer;
+}
+.category-parent-div:hover .category-name::before {
+    left: 0px;
+    top: 0%;
+    width: 50px;
+    transition: 0.5s ease-in-out;
+}
+.category-parent-div:hover .category-name::after {
+    left: 0px;
+    top: 20px;
+    width: 50px;
+    transition: 0.5s ease-in-out;
+}
+.order-total{
+    border: 1px solid grey;
+    padding: 10px 9px 10px;
+    max-height: 46px;
+}
+.font-size-13{
+    font-size: 13px;
+}

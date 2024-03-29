@@ -36,13 +36,13 @@ const Login = () => {
         setAuth({
           ...auth,
           user: res.data.data,
-          loken: res.data.token,
+          token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
         setTimeout(() => {
           action.resetForm();
           navigate(location.state || "/");
-        }, 1500);
+        }, 700);
       } else {
         toast.error(res.data.message);
       }
@@ -96,7 +96,7 @@ const Login = () => {
               Forgot password ?
             </Link>
           </p>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-outline-primary w-100">
             {!loading ? <span>Login</span> : <span>Logging in...</span>}
           </button>
         </form>

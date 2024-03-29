@@ -44,7 +44,7 @@ const ResetPassword = () => {
         setTimeout(() => {
           action.resetForm();
           navigate("/login");
-        }, 1500);
+        }, 700);
       } else {
         toast.error(res.data.message);
       }
@@ -99,7 +99,7 @@ const ResetPassword = () => {
               <p className="form-error">{errors.confirmPassword}</p>
             )}
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-outline-primary w-100">
             {!loading ? "Reset password" : "Loading..."}
           </button>
         </form>

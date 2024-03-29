@@ -45,7 +45,7 @@ const OtpVerification = () => {
           navigate("/reset-password", {
             state: { email: values.email, otp: values.otp },
           });
-        }, 1500);
+        }, 700);
       } else {
         toast.error(res.data.message);
       }
@@ -126,7 +126,7 @@ const OtpVerification = () => {
               Resend
             </span>
           </p>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-outline-primary w-100">
             {!loading ? "Verify" : "Loading..."}
           </button>
         </form>

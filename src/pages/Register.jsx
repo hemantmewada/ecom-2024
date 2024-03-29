@@ -51,7 +51,7 @@ const Register = () => {
         action.resetForm();
         setTimeout(() => {
           navigate("/login");
-        }, 1500);
+        }, 700);
       } else {
         toast.error(res.data.message);
       }
@@ -171,7 +171,7 @@ const Register = () => {
               <p className="form-error">{errors.role}</p>
             )}
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-outline-primary w-100">
             {!loading ? "Register" : "Registering..."}
           </button>
         </form>

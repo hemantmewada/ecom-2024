@@ -25,6 +25,16 @@ import AdminCategories from "./pages/admin/AdminCategories";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AdminUsers from "./pages/admin/AdminUsers";
 import UserOrders from "./pages/user/UserOrders";
+import AdminAddProduct from "./pages/admin/AdminAddProduct";
+import AdminEditProduct from "./pages/admin/AdminEditProduct";
+import AdminShowProduct from "./pages/admin/AdminShowProduct";
+import Search from "./pages/Search";
+import ProductDetail from "./pages/ProductDetail";
+import AllCategories from "./pages/AllCategories";
+import CategoryProducts from "./pages/CategoryProducts";
+import Cart from "./pages/Cart";
+import Dashboard from "./pages/Dashboard";
+import AdminOrders from "./pages/admin/AdminOrders";
 
 const App = () => {
   return (
@@ -39,15 +49,29 @@ const App = () => {
         <Route path="/otp-verification" element={<OtpVerification />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/policy" element={<Policy />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/product/:slug" element={<ProductDetail />} />
+        <Route path="/category/:slug" element={<CategoryProducts />} />
+        <Route path="/all-categories" element={<AllCategories />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/dashboard" element={<ProtectedRoute />}>
+          <Route path="home" element={<Dashboard />} />
           <Route path="" element={<UserRoutes />}>
-            <Route path="user/home" element={<UserDashboard />} />
             <Route path="user/orders" element={<UserOrders />} />
           </Route>
           <Route path="" element={<AdminRoutes />}>
-            <Route path="admin/home" element={<AdminDashboard />} />
             <Route path="admin/categories" element={<AdminCategories />} />
             <Route path="admin/products" element={<AdminProducts />} />
+            <Route path="admin/orders" element={<AdminOrders />} />
+            <Route path="admin/products/add" element={<AdminAddProduct />} />
+            <Route
+              path="admin/products/edit/:slug"
+              element={<AdminEditProduct />}
+            />
+            <Route
+              path="admin/products/show/:slug"
+              element={<AdminShowProduct />}
+            />
             <Route path="admin/users" element={<AdminUsers />} />
           </Route>
           <Route path="" element={<VendorRoutes />}>
@@ -59,14 +83,14 @@ const App = () => {
       </Routes>
       <ToastContainer
         position="top-right"
-        autoClose={1500}
+        autoClose={700}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
+        // pauseOnFocusLoss
         draggable
-        pauseOnHover
+        // pauseOnHover
         theme="colored"
       />
     </BrowserRouter>
