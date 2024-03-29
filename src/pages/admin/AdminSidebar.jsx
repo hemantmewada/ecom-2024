@@ -29,11 +29,11 @@ const AdminSidebar = () => {
           Products
         </NavLink>
         <NavLink
-          to="/dashboard/admin/orders"
+          to="/dashboard/orders"
           className="list-group-item list-group-item-action"
           onClick={() => setIsActive(false)}
         >
-          All Orders
+          Orders
         </NavLink>
         <NavLink
           to="/dashboard/admin/users"

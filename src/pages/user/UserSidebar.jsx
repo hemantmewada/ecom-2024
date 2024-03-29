@@ -15,11 +15,11 @@ const UserSidebar = () => {
           Home
         </NavLink>
         <NavLink
-          to="/dashboard/user/orders"
+          to="/dashboard/orders"
           className="list-group-item list-group-item-action"
           onClick={() => setIsActive(false)}
         >
-          My Orders
+          Orders
         </NavLink>
       </div>
     </>

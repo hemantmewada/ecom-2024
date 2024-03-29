@@ -31,7 +31,8 @@ const Profile = () => {
         updateProfile(values);
       },
     });
-  // get Profile
+
+  // update Profile
   const updateProfile = async () => {
     try {
       const res = await axios.put(
@@ -58,23 +59,6 @@ const Profile = () => {
       console.log(error);
     }
   };
-  // // get Profile
-  // const getProfile = async () => {
-  //   try {
-  //     const res = await axios.get(`${config.BASE_URL}/auth/profile`, {
-  //       headers: { Authorization: `Bearer ${auth?.token}` },
-  //     });
-  //     console.log(res);
-  //     if (res.data.status) {
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getProfile();
-  // }, []);
-
   return (
     <div>
       <form className="row g-3" onSubmit={handleSubmit}>
