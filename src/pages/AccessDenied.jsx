@@ -8,7 +8,7 @@ const AccessDenied = ({ path = "login" }) => {
   useEffect(() => {
     setTimeout(() => {
       navigate(`/${path}`, { state: location.pathname });
-    }, 1500);
+    }, 700);
   }, []);
 
   return (

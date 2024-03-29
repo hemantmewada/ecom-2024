@@ -46,7 +46,7 @@ const ForgotPassword = () => {
         setTimeout(() => {
           action.resetForm();
           navigate("/otp-verification", { state: { email: values.email } });
-        }, 1500);
+        }, 700);
       } else {
         toast.error(res.data.message);
       }
@@ -86,7 +86,7 @@ const ForgotPassword = () => {
               <p className="form-error">{errors.email}</p>
             )}
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-outline-primary w-100">
             {!loading ? "Forgot password" : "Loading..."}
           </button>
         </form>

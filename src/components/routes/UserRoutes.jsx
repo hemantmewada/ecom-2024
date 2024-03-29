@@ -5,7 +5,7 @@ import { useAuth } from "../../context/auth";
 
 const UserRoutes = () => {
   const { auth } = useAuth();
-  if (auth?.user?.role == "customer") {
+  if (auth?.user?.role == undefined || auth?.user?.role == "customer") {
     return <Outlet />;
   } else {
     return <AccessDenied path="" />;

@@ -7,7 +7,7 @@ const AdminSidebar = () => {
     <>
       <div className="list-group">
         <NavLink
-          to="/dashboard/admin/home"
+          to="/dashboard/home"
           className={`list-group-item list-group-item-action${
             isActive && "active"
           }`}
@@ -27,6 +27,13 @@ const AdminSidebar = () => {
           onClick={() => setIsActive(false)}
         >
           Products
+        </NavLink>
+        <NavLink
+          to="/dashboard/admin/orders"
+          className="list-group-item list-group-item-action"
+          onClick={() => setIsActive(false)}
+        >
+          All Orders
         </NavLink>
         <NavLink
           to="/dashboard/admin/users"

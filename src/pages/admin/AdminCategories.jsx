@@ -12,6 +12,7 @@ import { useFormik } from "formik";
 import { addEditCategorySchema } from "../../validation/validationSchema";
 import { useAuth } from "../../context/auth";
 import { toast } from "react-toastify";
+import { dateFormat } from "../../helpers/Helper";
 
 const initialValues = {
   name: "",
@@ -160,8 +161,7 @@ const AdminCategories = () => {
                           type="spinner-cub"
                           bgColor="#2A2C35"
                           color="#2A2C35"
-                          title={"Loading..."}
-                          size={40}
+                          size={30}
                         />
                       </td>
                     </tr>
@@ -171,15 +171,15 @@ const AdminCategories = () => {
                         <th scope="row">{++index}</th>
                         <td>{category.name}</td>
                         <td>
-                          {format(
-                            new Date(category.createdAt),
-                            "d-MM-yyyy h:mm a"
+                          {dateFormat(
+                            category.createdAt,
+                            "d-MM-yyyy h:mm:ss a"
                           )}
                         </td>
                         <td className="">
                           <button
                             type="button"
-                            className="btn btn-success"
+                            className="btn btn-outline-success me-2"
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
                             onClick={() => getSingleCategories(category.slug)}
@@ -188,7 +188,7 @@ const AdminCategories = () => {
                           </button>
                           <button
                             type="button"
-                            className="btn btn-danger"
+                            className="btn btn-outline-danger"
                             onClick={() => deleteCategory(category._id)}
                           >
                             <FaTrashAlt />
@@ -203,7 +203,7 @@ const AdminCategories = () => {
           </div>
           <div className="col-md-3">
             <div className="card w-100 p-3">
-              <h3 className="pb-5">Add / Edit</h3>
+              <h3 className="pb-5">Add Category</h3>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <InputType
@@ -221,7 +221,10 @@ const AdminCategories = () => {
                   <p className="form-error">{errors.name}</p>
                 )}
                 <div className="mb-3">
-                  <button className="btn btn-primary w-50" type="submit">
+                  <button
+                    className="btn btn-outline-primary w-50"
+                    type="submit"
+                  >
                     {isLoadingCreateCategory ? "Adding..." : "Add"}
                   </button>
                 </div>
@@ -273,14 +276,14 @@ const AdminCategories = () => {
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-danger"
+                  className="btn btn-outline-danger"
                   data-bs-dismiss="modal"
                 >
                   Discard
                 </button>
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-outline-primary"
                   data-bs-dismiss="modal"
                 >
                   {isLoadingEditCategory ? "Updating..." : "Update"}

@@ -7,7 +7,7 @@ const UserSidebar = () => {
     <>
       <div className="list-group">
         <NavLink
-          to="/dashboard/user/home"
+          to="/dashboard/home"
           className={`list-group-item list-group-item-action${
             isActive && "active"
           }`}

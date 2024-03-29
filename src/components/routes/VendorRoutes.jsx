@@ -5,7 +5,7 @@ import { useAuth } from "../../context/auth";
 
 const VendorRoutes = () => {
   const { auth } = useAuth();
-  if (auth?.user?.role == "vendor") {
+  if (auth?.user?.role == undefined || auth?.user?.role == "vendor") {
     return <Outlet />;
   } else {
     return <AccessDenied path="" />;

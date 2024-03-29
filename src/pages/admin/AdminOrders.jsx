@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
-import UserSidebar from "./UserSidebar";
 import axios from "axios";
-import config from "./../../config/config";
+import config from "../../config/config";
 import Loader from "react-js-loader";
 import { useAuth } from "../../context/auth";
 import { dateFormat } from "../../helpers/Helper";
+import AdminSidebar from "./AdminSidebar";
 
-const UserOrders = () => {
+const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { auth } = useAuth();
@@ -38,7 +38,7 @@ const UserOrders = () => {
       <div className="container-fluid p-3 dashboard">
         <div className="row">
           <div className="col-md-2">
-            <UserSidebar />
+            <AdminSidebar />
           </div>
           <div className="col-md-10">
             <div className="card w-100 p-3">
@@ -88,4 +88,4 @@ const UserOrders = () => {
   );
 };
 
-export default UserOrders;
+export default AdminOrders;
