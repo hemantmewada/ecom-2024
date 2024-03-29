@@ -3,16 +3,15 @@ import Layout from "../../components/layout/Layout";
 import AdminSidebar from "./AdminSidebar";
 import axios from "axios";
 import config from "./../../config/config";
-import { format } from "date-fns";
 import Loader from "react-js-loader";
 import InputType from "./../../components/InputType";
 import { FiEdit } from "react-icons/fi";
-import { FaTrashAlt } from "react-icons/fa";
 import { useFormik } from "formik";
 import { addEditCategorySchema } from "../../validation/validationSchema";
 import { useAuth } from "../../context/auth";
 import { toast } from "react-toastify";
 import { dateFormat } from "../../helpers/Helper";
+import { FaTrashAlt } from "react-icons/fa";
 
 const initialValues = {
   name: "",
@@ -21,6 +20,7 @@ const initialValues = {
 const AdminCategories = () => {
   const [categories, setCategories] = useState([]);
   const [isLoadingCategory, setIsLoadingCategory] = useState(false);
+  const [isLoadingDelete, setIsLoadingDelete] = useState({});
   const [isLoadingCreateCategory, setIsLoadingCreateCategory] = useState(false);
   const [isLoadingEditCategory, setIsLoadingEditCategory] = useState(false);
   const { auth } = useAuth();
@@ -78,6 +78,7 @@ const AdminCategories = () => {
       return false;
     }
     try {
+      setIsLoadingDelete({ _id, status: true });
       const res = await axios.delete(
         `${config.BASE_URL}/category/delete/${_id}`,
         { headers: { Authorization: `Bearer ${auth?.token}` } }
@@ -86,8 +87,10 @@ const AdminCategories = () => {
         toast.success(res.data.message);
         getAllCategories();
       }
+      setIsLoadingDelete({ _id, status: false });
       // console.log(res);
     } catch (error) {
+      setIsLoadingDelete({ _id, status: false });
       console.log(error);
       toast.error(error?.response?.data.message);
     }
@@ -188,10 +191,26 @@ const AdminCategories = () => {
                           </button>
                           <button
                             type="button"
-                            className="btn btn-outline-danger"
+                            className={`btn btn-outline-danger${
+                              isLoadingDelete.status == true &&
+                              isLoadingDelete._id == category._id
+                                ? " p-0"
+                                : ""
+                            }`}
                             onClick={() => deleteCategory(category._id)}
                           >
-                            <FaTrashAlt />
+                            {isLoadingDelete.status == true &&
+                            isLoadingDelete._id == category._id ? (
+                              <img
+                                style={{ color: "#2A2C35s" }}
+                                src="/images/spinner.gif"
+                                alt=""
+                                width="40px"
+                                height="40px"
+                              />
+                            ) : (
+                              <FaTrashAlt />
+                            )}
                           </button>
                         </td>
                       </tr>
